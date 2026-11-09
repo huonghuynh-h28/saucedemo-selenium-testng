@@ -1,5 +1,7 @@
 # SauceDemo Web Test Automation
 
+![Selenium Tests](https://github.com/huonghuynh-h28/saucedemo-selenium-testng/actions/workflows/tests.yml/badge.svg)
+
 Automated UI tests for [saucedemo.com](https://www.saucedemo.com) built with **Java, Selenium WebDriver, TestNG** and the **Page Object Model (POM)**. Test results are published as an **Allure** report.
 
 ## Tech stack

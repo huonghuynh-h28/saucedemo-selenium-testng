@@ -14,17 +14,27 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        ChromeOptions options = new ChromeOptions();
-        Map<String, Object> prefs = new HashMap<>();
-        prefs.put("credentials_enable_service", false);
-        prefs.put("profile.password_manager_enabled", false);
-        prefs.put("profile.password_manager_leak_detection", false);
-        options.setExperimentalOption("prefs", prefs);
-        options.addArguments("--incognito");
+        @BeforeMethod
+        public void setUp() {
+            ChromeOptions options = new ChromeOptions();
+            Map<String, Object> prefs = new HashMap<>();
+            prefs.put("credentials_enable_service", false);
+            prefs.put("profile.password_manager_enabled", false);
+            prefs.put("profile.password_manager_leak_detection", false);
+            options.setExperimentalOption("prefs", prefs);
+            options.addArguments("--incognito");
 
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com");
+            if (Boolean.getBoolean("headless")) {
+                options.addArguments("--headless=new", "--no-sandbox",
+                        "--disable-dev-shm-usage", "--window-size=1920,1080");
+            }
+
+            driver = new ChromeDriver(options);
+            if (!Boolean.getBoolean("headless")) {
+                driver.manage().window().maximize();
+            }
+            driver.get("https://www.saucedemo.com");
+        }
     }
 
     @AfterMethod
