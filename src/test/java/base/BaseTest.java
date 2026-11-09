@@ -14,8 +14,6 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        @BeforeMethod
-        public void setUp() {
             ChromeOptions options = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<>();
             prefs.put("credentials_enable_service", false);
@@ -35,7 +33,6 @@ public class BaseTest {
             }
             driver.get("https://www.saucedemo.com");
         }
-    }
 
     @AfterMethod
     public void tearDown() {
